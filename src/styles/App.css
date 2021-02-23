@@ -1,0 +1,21 @@
+.app-container {
+    width: 80%;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid gray;
+}
+
+.app-left {
+    flex: 3 3 30%;
+}
+
+.app-right{
+    flex: 7 7 70%;
+}
+
+
+
+
