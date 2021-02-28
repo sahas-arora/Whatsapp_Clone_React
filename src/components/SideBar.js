@@ -2,23 +2,31 @@ import React, { useState } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import { SearchOutlined } from '@material-ui/icons';
 
-
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
+import SideBarChat from "./SideBarChat";
+
 import "../styles/SideBar.css";
 
-const SideBar = () => {
+const SideBar = ({ AvatarSource }) => {
     const style = {
         iconStyles: {
             margin: "10px"
         }
     };
 
+
     const [searchTerm, setSearchTerm] = useState('');
     const [searchBarClicked, changeSearchBarIcon] = useState(false);
+    const [avatarSource, setAvatarSource] = useState('');
+
+    const sendingAvatarSourceToParent = (src) => {
+        setAvatarSource(src);
+    }
+
 
     return(
         <div className="sidebar-container">
@@ -47,6 +55,7 @@ const SideBar = () => {
 
                 <div className="sidebar-search-container">  
                     {searchBarClicked ? <ArrowBackIcon /> : <SearchOutlined />}
+                    
                     <input
                         onClick={() => changeSearchBarIcon(current => !current)}
                         placeholder="Search or start new chat"
@@ -59,7 +68,11 @@ const SideBar = () => {
             </div>
 
             <div className="sidebar-chats">
-                Chats here
+               <SideBarChat addNewChat sendChatDetails />
+               <SideBarChat sendChatDetails />
+               <SideBarChat sendChatDetails />
+               <SideBarChat sendChatDetails />
+        
             </div>              
        
         </div>
