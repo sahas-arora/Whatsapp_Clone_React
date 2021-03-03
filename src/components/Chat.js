@@ -18,6 +18,12 @@ const Chat = ({ currentSeed }) => {
     
     // console.log("Chat yo ", selectedSeed);
     const url = currentSeed ? `https://avatars.dicebear.com/api/human/${currentSeed}.svg` : null;
+
+    const sendMessage = (event) => {
+        event.preventDefault();
+
+        console.log("Message you typed: ", message);
+    }
     
     return(
         <div className="chats">
@@ -59,11 +65,16 @@ const Chat = ({ currentSeed }) => {
 
                 <form>
                     <input 
-                    placeholder="Type a message"
-                    value={message}
-                    onChage={event => setMessage(event.target.value)}
+                        placeholder="Type a message"
+                        value={message}
+                        onChange={event => setMessage(event.target.value)}
+                        type="text"
                     />
-                    <button type="submit">Send</button>
+                    <button 
+                        type="submit"
+                        onClick={sendMessage}
+                    >
+                    </button>
                 </form>
 
                 {/* <IconButton> */}
