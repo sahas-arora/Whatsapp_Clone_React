@@ -9,11 +9,11 @@
 }
 
 .app-left {
-    flex: 3 3 30%;
+    flex: 0.35;
 }
 
 .app-right{
-    flex: 7 7 70%;
+    flex: 0.65;
 }
 
 

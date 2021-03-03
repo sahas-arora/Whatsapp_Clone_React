@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Avatar } from "@material-ui/core";
+import { SelectedSeed } from "../hooks/selectedSeed";
 
 import "../styles/SideBarChat.css";
 
-const SideBarChat = ({ addNewChat, sendChatDetails }) => {
+const SideBarChat = ({ addNewChat }) => {
     const [seed, setSeed] = useState('');
+    const [selectedSeed, setSelectedSeed] = SelectedSeed();
     let url = `https://avatars.dicebear.com/api/human/${seed}.svg`;
+
 
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 10000));
@@ -23,7 +26,7 @@ const SideBarChat = ({ addNewChat, sendChatDetails }) => {
     return !addNewChat ? (
         <div 
             className="sidechat-container"
-            onClick={( seed ) => console.log("This ", seed)}
+            onClick={() => setSelectedSeed(seed)}
         >
             <Avatar src={url}/>
             <div className="sidechat-info">

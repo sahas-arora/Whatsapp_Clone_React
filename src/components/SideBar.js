@@ -11,7 +11,7 @@ import SideBarChat from "./SideBarChat";
 
 import "../styles/SideBar.css";
 
-const SideBar = ({ AvatarSource }) => {
+const SideBar = () => {
     const style = {
         iconStyles: {
             margin: "10px"
@@ -21,11 +21,11 @@ const SideBar = ({ AvatarSource }) => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchBarClicked, changeSearchBarIcon] = useState(false);
-    const [avatarSource, setAvatarSource] = useState('');
+    const [selectedSeed, setSelectedSeed] = useState('');
 
-    const sendingAvatarSourceToParent = (src) => {
-        setAvatarSource(src);
-    }
+    // const sendingAvatarSourceToParent = (src) => {
+    //     setSelectedSeed()
+    // }
 
 
     return(
@@ -68,10 +68,10 @@ const SideBar = ({ AvatarSource }) => {
             </div>
 
             <div className="sidebar-chats">
-               <SideBarChat addNewChat sendChatDetails />
-               <SideBarChat sendChatDetails />
-               <SideBarChat sendChatDetails />
-               <SideBarChat sendChatDetails />
+               <SideBarChat addNewChat selectedSeed />
+               <SideBarChat sendChatDetails selectedSeed />
+               <SideBarChat sendChatDetails selectedSeed />
+               <SideBarChat sendChatDetails selectedSeed />
         
             </div>              
        

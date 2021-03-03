@@ -1,36 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+
+import { SelectedSeed } from "../hooks/selectedSeed";
 
 import SideBar from "./SideBar";
 import Chat from "./Chat";
 
 import "../styles/App.css";
 
-export default class App extends Component {
-    constructor() {
-        super();
+const App = () => {
 
-        this.state = { avatarSource: ''}
-        this.setAvatarSource = this.setAvatarSource.bind(this);
-    }
-
-    setAvatarSource(src) {
-        this.setState({ avatarSource: src})
-    }
+    const [currentSeed, setSeed] = SelectedSeed();
 
 
-    render() {
-        return(
-            <div className="app-container">
-                <div className="app-left">
-                    <SideBar AvatarSource={this.setAvatarSource} />
-                </div>
-                
-                <div className="app-right">
-                    <Chat avatarSource={this.state.avatarSource} />
-                </div>
+    return(
+        <div className="app-container">
+            <div className="app-left">
+                <SideBar  />
             </div>
-        );
-    }
+                        
+            <div className="app-right">
+                <Chat currentSeed={currentSeed} setSeed={setSeed} />
+            </div>
+        </div>
+    );
 }
+
+export default App;
+
+
 
 

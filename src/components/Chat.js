@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
-import { SearchOutlined, AttachFile, MoreVert} from '@material-ui/icons';
+import { SearchOutlined, AttachFile, MoreVert, InsertEmoticon, Mic} from '@material-ui/icons';
 
 import { SelectedSeed } from "../hooks/selectedSeed";
 
 
 import "../styles/Chat.css";
 
-const Chat = () => {
+const Chat = ({ currentSeed }) => {
 
+    const [message, setMessage] = useState('');
     const [selectedSeed, setSeed] = SelectedSeed();
+    
 
-    console.log("Chat yo ", selectedSeed);
-    const url = `https://avatars.dicebear.com/api/human/${selectedSeed}.svg`
-
+    
+    // console.log("selected seed is ", selectedSeed);
+    
+    // console.log("Chat yo ", selectedSeed);
+    const url = currentSeed ? `https://avatars.dicebear.com/api/human/${currentSeed}.svg` : null;
+    
     return(
         <div className="chats">
             
@@ -39,12 +44,33 @@ const Chat = () => {
                 </div>
             </div>
 
-            <div className="chats-message">
-                Here!!
+            <div className="chats-body">
+                <p className="chats-message chats-receiver">
+                    <span className="chat-name">Sahas Arora</span>
+                    Hey there!
+                    <span className="chat-timestamp">3:54 pm</span>
+                </p>
             </div>
 
-            <div className="chats-input-panel">
-            
+            <div className="chats-footer">
+                <IconButton>
+                    <InsertEmoticon />
+                </IconButton>
+
+                <form>
+                    <input 
+                    placeholder="Type a message"
+                    value={message}
+                    onChage={event => setMessage(event.target.value)}
+                    />
+                    <button type="submit">Send</button>
+                </form>
+
+                <IconButton>
+                    <Mic />
+                </IconButton>
+                
+
             </div>
 
         </div>
