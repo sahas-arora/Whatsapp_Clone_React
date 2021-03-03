@@ -53,9 +53,9 @@ const Chat = ({ currentSeed }) => {
             </div>
 
             <div className="chats-footer">
-                <IconButton>
+                {/* <IconButton> */}
                     <InsertEmoticon />
-                </IconButton>
+                {/* </IconButton> */}
 
                 <form>
                     <input 
@@ -66,9 +66,9 @@ const Chat = ({ currentSeed }) => {
                     <button type="submit">Send</button>
                 </form>
 
-                <IconButton>
+                {/* <IconButton> */}
                     <Mic />
-                </IconButton>
+                {/* </IconButton> */}
                 
 
             </div>
